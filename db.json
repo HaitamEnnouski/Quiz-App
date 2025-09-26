@@ -1,0 +1,18 @@
+{
+"quizzes": [
+{
+    "id": 1,
+    "title": "JavaScript Basics",
+    "description": "Test your JS knowledge!",
+    "category": "Technology",
+    "questions": [
+    {
+        "id": 1,
+        "question": "Which is a JavaScript framework?",
+        "options": ["React", "Laravel", "Django", "Rails"],
+        "answer": "React"
+    }
+    ]
+}
+]
+}
