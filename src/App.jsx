@@ -1,11 +1,16 @@
-import React from 'react'
+import {Routes, Route } from "react-router-dom";
+import Landing from "./pages/Landing";
+import QuizList from "./pages/QuizList";
+import Quiz from "./pages/Quiz";
+import Results from "./pages/Results";
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      
-    </div>
-  )
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/quizzes" element={<QuizList />} />
+        <Route path="/quiz/:id" element={<Quiz />} />
+        <Route path="/results" element={<Results />} />
+      </Routes>
+  );
 }
-
-export default App
