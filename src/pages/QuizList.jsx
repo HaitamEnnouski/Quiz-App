@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Loader2, AlertCircle, BookOpen } from "lucide-react";
+import { Loader2, AlertCircle, BookOpen, ArrowLeft } from "lucide-react";
 
 export default function QuizList() {
     const [quizzes, setQuizzes] = useState([]);
@@ -36,6 +36,10 @@ export default function QuizList() {
         navigate(`/quiz/${quizId}`, { state: { quizTitle } });
     };
 
+    const handleBackToHome = () => {
+        navigate("/");
+    };
+
     if (loading) {
         return (
             <div className="min-h-screen bg-gray-200 flex items-center justify-center">
@@ -54,12 +58,21 @@ export default function QuizList() {
                     <AlertCircle className="h-12 w-12 mx-auto mb-4 text-red-600" />
                     <h2 className="text-xl font-bold mb-4 uppercase">Error</h2>
                     <p className="mb-6">{error}</p>
-                    <button
-                        onClick={fetchQuizzes}
-                        className="bg-black text-white font-bold py-2 px-6 border-2 border-black hover:bg-gray-800 uppercase"
-                    >
-                        Try Again
-                    </button>
+                    <div className="flex gap-3 justify-center">
+                        <button
+                            onClick={handleBackToHome}
+                            className="bg-gray-600 text-white font-bold py-2 px-4 border-2 border-black hover:bg-gray-700 uppercase flex items-center gap-2"
+                        >
+                            <ArrowLeft className="h-4 w-4" />
+                            Back
+                        </button>
+                        <button
+                            onClick={fetchQuizzes}
+                            className="bg-black text-white font-bold py-2 px-6 border-2 border-black hover:bg-gray-800 uppercase"
+                        >
+                            Try Again
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -72,12 +85,21 @@ export default function QuizList() {
                     <BookOpen className="h-12 w-12 mx-auto mb-4 text-gray-600" />
                     <h2 className="text-xl font-bold mb-4 uppercase">No Quizzes Available</h2>
                     <p className="mb-6">Check back later for new quizzes!</p>
-                    <button
-                        onClick={fetchQuizzes}
-                        className="bg-black text-white font-bold py-2 px-6 border-2 border-black hover:bg-gray-800 uppercase"
-                    >
-                        Refresh
-                    </button>
+                    <div className="flex gap-3 justify-center">
+                        <button
+                            onClick={handleBackToHome}
+                            className="bg-gray-600 text-white font-bold py-2 px-4 border-2 border-black hover:bg-gray-700 uppercase flex items-center gap-2"
+                        >
+                            <ArrowLeft className="h-4 w-4" />
+                            Back
+                        </button>
+                        <button
+                            onClick={fetchQuizzes}
+                            className="bg-black text-white font-bold py-2 px-6 border-2 border-black hover:bg-gray-800 uppercase"
+                        >
+                            Refresh
+                        </button>
+                    </div>
                 </div>
             </div>
         );
@@ -86,6 +108,17 @@ export default function QuizList() {
     return (
         <div className="min-h-screen bg-gray-200 py-8">
             <div className="max-w-6xl mx-auto px-4">
+                {/* Back Button */}
+                <div className="mb-6">
+                    <button
+                        onClick={handleBackToHome}
+                        className="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 border-2 border-black uppercase flex items-center gap-2 hover:shadow-[4px_4px_0px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+                    >
+                        <ArrowLeft className="h-4 w-4" />
+                        Back to Home
+                    </button>
+                </div>
+
                 {/* Header */}
                 <div className="text-center mb-8">
                     <h1 className="text-4xl font-black uppercase mb-4">Available Quizzes</h1>
